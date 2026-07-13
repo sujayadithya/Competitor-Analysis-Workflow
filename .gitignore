@@ -1,0 +1,35 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# Workspace / IDE configs
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Output / Cache files
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+.eslintcache
+.parcel-cache
+
+# Competitor Analysis Run Artifacts (Exclude dynamic run outputs)
+reports/*.pdf
+reports/*.html
+reports/competitor_research_report_*.md
+examples/tmp/
+assets/screenshots/competitor_*.png
+assets/screenshots/competitor_*.jpg
+
+# Local Configurations (do not commit secrets or active local setup)
+config/settings.json
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,36 @@
+{
+  "discovery": {
+    "defaultSearchEngine": "google",
+    "maxCompetitorsToDiscover": 5,
+    "targetMarkets": ["Global", "US", "APAC"],
+    "platforms": ["Web", "iOS", "Android"]
+  },
+  "analysis": {
+    "pricingTiersToAnalyze": ["Free", "Basic", "Pro", "Enterprise"],
+    "featuresOfInterest": [
+      "User Onboarding",
+      "Authentication / Signup Flow",
+      "Checkout / Payment Process",
+      "Dashboard Layout",
+      "Data Exporting"
+    ]
+  },
+  "screenshots": {
+    "outputDirectory": "assets/screenshots",
+    "format": "png",
+    "viewports": {
+      "desktop": { "width": 1440, "height": 900 },
+      "mobile": { "width": 375, "height": 812 }
+    },
+    "captureFullPage": true
+  },
+  "reporting": {
+    "outputDirectory": "reports",
+    "formats": ["markdown", "pdf"],
+    "theme": "modern-dark",
+    "includeMetadata": true,
+    "includeFeatureMatrix": true,
+    "includeUXPatternLibrary": true,
+    "includeActionPlan": true
+  }
+}
