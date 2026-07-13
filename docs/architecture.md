@@ -12,9 +12,11 @@ The workflow executes as a pipe-and-filter pipeline where each modular **Skill**
 graph TD
     User([User Request]) --> PC[Skill: Product Context]
     PC --> |Outputs| PCData[ProductContext JSON]
+    User --> RGSkill[Skill: Research Goals]
+    RGSkill --> |Outputs| RGData[ResearchGoals JSON]
     User --> Q[Guided Interview]
     Q --> |Init| RC[ResearchContext JSON]
-    PCData & RC --> SD[Skill: Competitor Discovery]
+    PCData & RGData & RC --> SD[Skill: Competitor Discovery]
     SD --> |Outputs| CPList[CompetitorProfile List JSON]
     CPList --> SA[Skill: Competitor Analysis]
     SA --> |Enriches| CPList
@@ -22,7 +24,7 @@ graph TD
     UX --> |Outputs| UXPL[UXPattern Library JSON]
     CPList & UXPL --> OA[Skill: Opportunity Analysis]
     OA --> |Outputs| POList[ProductOpportunity List JSON]
-    PCData & RC & CPList & UXPL & POList --> RG[Skill: Report Generator]
+    PCData & RGData & RC & CPList & UXPL & POList --> RG[Skill: Report Generator]
     RG --> |Generates| FinalReport[Competitor Research Report markdown/pdf]
 ```
 
@@ -62,6 +64,64 @@ Describes the user's own product to establish baseline categories, target audien
   "businessGoals": ["Reduce customer support tickets by 30%", "Increase upsell conversion rates"],
   "challenges": ["High churn during checkout redirection", "Complex regional tax compliance"],
   "successMetrics": ["Self-serve action completion rate", "Support ticket volume reduction"]
+}
+```
+
+---
+
+### 0.5. `ResearchGoals`
+Describes the structured objectives and specific prioritized questions of the research.
+
+```json
+{
+  "rawGoals": ["string"],
+  "researchObjectives": [
+    {
+      "objectiveId": "string",
+      "description": "string",
+      "priority": "High" | "Medium" | "Low",
+      "targetQuestions": ["string"]
+    }
+  ],
+  "focusPrioritization": {
+    "highPriority": ["string"],
+    "mediumPriority": ["string"],
+    "lowPriority": ["string"]
+  }
+}
+```
+
+**Example:**
+```json
+{
+  "rawGoals": [
+    "Determine how competitors handle B2B user onboarding",
+    "Compare invoice compliance in different regions"
+  ],
+  "researchObjectives": [
+    {
+      "objectiveId": "obj-onboarding-ux",
+      "description": "Evaluate the checkout wizard steps and friction for onboarding new SaaS teams.",
+      "priority": "High",
+      "targetQuestions": [
+        "How many steps does Stripe Billing require to set up a subscription portal?",
+        "What payment details are collected up-front?"
+      ]
+    },
+    {
+      "objectiveId": "obj-tax-compliance",
+      "description": "Analyze compliance steps and VAT calculations on competitor checkouts.",
+      "priority": "Medium",
+      "targetQuestions": [
+        "Does Paddle show regional taxes inline, or on a redirect page?"
+      ]
+    }
+  ],
+  "focusPrioritization": {
+    "highPriority": ["checkout flow", "onboarding wizard"],
+    "mediumPriority": ["invoice billing portal"],
+    "lowPriority": ["pricing plans page"]
+  }
 }
 ```
 
