@@ -167,6 +167,7 @@ Captures detailed qualitative and quantitative information about each competitor
   "id": "string",
   "name": "string",
   "website": "string (URL)",
+  "category": "Direct" | "Indirect" | "Best-in-class" | "Emerging",
   "marketShare": "string (e.g. Leader, Challenger, Niche)",
   "pricingModels": [
     {
@@ -188,6 +189,7 @@ Captures detailed qualitative and quantitative information about each competitor
   "id": "comp-revolut",
   "name": "Revolut",
   "website": "https://revolut.com",
+  "category": "Direct",
   "marketShare": "Leader",
   "pricingModels": [
     {
