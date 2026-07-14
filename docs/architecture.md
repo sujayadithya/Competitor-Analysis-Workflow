@@ -12,7 +12,9 @@ The workflow executes as a pipe-and-filter pipeline where each modular **Skill**
 graph TD
     User([User Request]) --> Q[Guided Interview]
     Q --> |Init| RC[ResearchContext JSON]
-    RC --> SD[Skill: Competitor Discovery]
+    User --> RSSkill[Skill: Research Scope]
+    RSSkill --> |Outputs| RSData[ResearchScope JSON]
+    RC & RSData --> SD[Skill: Competitor Discovery]
     SD --> |Outputs| CPList[CompetitorProfile List JSON]
     CPList --> SA[Skill: Competitor Analysis]
     SA --> |Enriches| CPList
@@ -20,7 +22,7 @@ graph TD
     UX --> |Outputs| UXPL[UXPattern Library JSON]
     CPList & UXPL --> OA[Skill: Opportunity Analysis]
     OA --> |Outputs| POList[ProductOpportunity List JSON]
-    RC & CPList & UXPL & POList --> RG[Skill: Report Generator]
+    RC & RSData & CPList & UXPL & POList --> RG[Skill: Report Generator]
     RG --> |Generates| FinalReport[Competitor Research Report markdown/pdf]
 ```
 
@@ -57,6 +59,39 @@ Describes the research parameters, target audience, specific questions, and scop
   "platforms": ["iOS", "Android"],
   "marketSegment": "Fintech / NeoBanking",
   "timestamp": "2026-07-13T12:00:00Z"
+}
+```
+
+---
+
+### 1.5. `ResearchScope`
+Configures the specific UI components, interaction categories, and custom guidelines for the audit.
+
+```json
+{
+  "selectedCategories": ["string"],
+  "customInstructions": {
+    "categoryName": "string"
+  },
+  "deepInspect": {
+    "categoryName": "boolean"
+  }
+}
+```
+
+**Example:**
+```json
+{
+  "selectedCategories": ["Onboarding", "Forms", "Pricing"],
+  "customInstructions": {
+    "Onboarding": "Analyze the number of fields in the signup form and check if social login is available.",
+    "Pricing": "Examine monthly vs annual billing toggles."
+  },
+  "deepInspect": {
+    "Onboarding": true,
+    "Forms": false,
+    "Pricing": true
+  }
 }
 ```
 
