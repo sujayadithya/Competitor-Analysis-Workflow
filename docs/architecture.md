@@ -142,6 +142,7 @@ Captures detailed qualitative and quantitative information about each competitor
   "id": "string",
   "name": "string",
   "website": "string (URL)",
+  "category": "Direct" | "Indirect" | "Best-in-class" | "Emerging",
   "marketShare": "string (e.g. Leader, Challenger, Niche)",
   "pricingModels": [
     {
@@ -153,7 +154,21 @@ Captures detailed qualitative and quantitative information about each competitor
   "keyFeatures": ["string"],
   "strengths": ["string"],
   "weaknesses": ["string"],
-  "positioningStatement": "string"
+  "positioningStatement": "string",
+  "screenshots": {
+    "landingPage": "string",
+    "pricingPage": "string"
+  },
+  "navigationAnalysis": "string",
+  "informationArchitecture": ["string"],
+  "featureInventory": [
+    {
+      "featureName": "string",
+      "status": "Supported" | "Partial" | "Unsupported",
+      "notes": "string"
+    }
+  ],
+  "observations": ["string"]
 }
 ```
 
@@ -163,6 +178,7 @@ Captures detailed qualitative and quantitative information about each competitor
   "id": "comp-revolut",
   "name": "Revolut",
   "website": "https://revolut.com",
+  "category": "Direct",
   "marketShare": "Leader",
   "pricingModels": [
     {
@@ -179,7 +195,28 @@ Captures detailed qualitative and quantitative information about each competitor
   "keyFeatures": ["Multi-currency accounts", "Crypto buying", "Savings Vaults"],
   "strengths": ["Rapid account setup", "Vast cross-border capabilities"],
   "weaknesses": ["Complex fee structures for weekend exchange", "Slower customer support on free tiers"],
-  "positioningStatement": "The global financial super-app for managing all your spending, savings, and investments."
+  "positioningStatement": "The global financial super-app for managing all your spending, savings, and investments.",
+  "screenshots": {
+    "landingPage": "assets/screenshots/competitor-revolut-landing.png",
+    "pricingPage": "assets/screenshots/competitor-revolut-pricing.png"
+  },
+  "navigationAnalysis": "Sticky top bar navigation menu with dynamic dashboard submenus.",
+  "informationArchitecture": ["/pricing", "/business", "/cards", "/help"],
+  "featureInventory": [
+    {
+      "featureName": "Onboarding",
+      "status": "Supported",
+      "notes": "Fast verification flows, collects phone number and runs SMS pin check."
+    },
+    {
+      "featureName": "Pricing",
+      "status": "Supported",
+      "notes": "Shows monthly vs annual discount toggles prominently."
+    }
+  ],
+  "observations": [
+    "Sign-up CTA is sticky and remains in view while scrolling page."
+  ]
 }
 ```
 
