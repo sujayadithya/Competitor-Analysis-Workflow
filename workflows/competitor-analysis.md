@@ -6,7 +6,13 @@ This document orchestrates the end-to-end competitor analysis process. It guides
 
 ## 📋 Execution Protocol
 
-### Step 1: Initialize Research Context
+### Step 1: Initialize Product Context
+1. Execute [product-context/SKILL.md](file:///Users/sujay/Documents/App%20Projects/Competitor%20Analysis%20Workflow/skills/product-context/SKILL.md) to gather and validate details about the user's own product.
+2. Save the result to the workspace root as `product_context.json` (matching the `ProductContext` schema in [docs/architecture.md](file:///Users/sujay/Documents/App%20Projects/Competitor%20Analysis%20Workflow/docs/architecture.md)).
+
+---
+
+### Step 2: Initialize Research Context
 1. Prompt the user with the Guided Questionnaire defined in [workflow.md](file:///Users/sujay/Documents/App%20Projects/Competitor%20Analysis%20Workflow/docs/workflow.md).
 2. Process the user's answers and create the `ResearchContext` JSON object (matching the schema in [architecture.md](file:///Users/sujay/Documents/App%20Projects/Competitor%20Analysis%20Workflow/docs/architecture.md)).
 3. Write this object to the scratch workspace folder as `research_context.json`.
@@ -51,11 +57,12 @@ This document orchestrates the end-to-end competitor analysis process. It guides
 
 ### Step 7: Generate Structured Report
 1. Read all generated JSON models:
+   - `product_context.json`
    - `research_context.json`
    - `research_scope.json`
    - `competitor_profiles.json`
    - `ux_patterns.json`
    - `product_opportunities.json`
-2. Execute [report-generator/SKILL.md](file:///Users/sujay/Documents/App%20Projects/Competitor%20Analysis%20Workflow/skills/report-generator/SKILL.md) using formatting files under `templates/` (e.g. `report-template.md`, `feature-matrix.md`, `ux-pattern-library.md`, and `action-plan.md`).
+2. Execute [report-generator/SKILL.md](file:///Users/sujay/Documents/App%20Projects/Competitor%20Analysis%20Workflow/skills/report-generator/SKILL.md) using formatting templates under `templates/` (e.g. `report-template.md`, `feature-matrix.md`, `ux-pattern-library.md`, and `action-plan.md`).
 3. Compile and save the final report under `reports/competitor_research_report.md`.
 4. Render the compiled markdown file for the user to review.

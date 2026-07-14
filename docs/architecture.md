@@ -10,7 +10,9 @@ The workflow executes as a pipe-and-filter pipeline where each modular **Skill**
 
 ```mermaid
 graph TD
-    User([User Request]) --> Q[Guided Interview]
+    User([User Request]) --> PC[Skill: Product Context]
+    PC --> |Outputs| PCData[ProductContext JSON]
+    User --> Q[Guided Interview]
     Q --> |Init| RC[ResearchContext JSON]
     User --> RSSkill[Skill: Research Scope]
     RSSkill --> |Outputs| RSData[ResearchScope JSON]
@@ -31,6 +33,41 @@ To maintain modularity and state persistence between runs, intermediate outputs 
 ---
 
 ## 📋 Shared Data Models (JSON Schemas)
+
+### 0. `ProductContext`
+Describes the user's own product to establish baseline categories, target audience, business goals, and challenges for comparison.
+
+```json
+{
+  "productName": "string",
+  "productCategory": "string",
+  "productOverview": "string",
+  "targetUsers": ["string"],
+  "jobsToBeDone": ["string"],
+  "businessGoals": ["string"],
+  "challenges": ["string"],
+  "successMetrics": ["string"]
+}
+```
+
+**Example:**
+```json
+{
+  "productName": "SaaS Billing Portal",
+  "productCategory": "B2B SaaS Fintech",
+  "productOverview": "A customer self-serve billing portal that lets SaaS users manage their subscriptions and view history.",
+  "targetUsers": ["B2B SaaS Founders", "Finance Teams"],
+  "jobsToBeDone": [
+    "Upgrade or downgrade subscriptions without contacting support",
+    "Download historically compliant VAT invoices easily"
+  ],
+  "businessGoals": ["Reduce customer support tickets by 30%", "Increase upsell conversion rates"],
+  "challenges": ["High churn during checkout redirection", "Complex regional tax compliance"],
+  "successMetrics": ["Self-serve action completion rate", "Support ticket volume reduction"]
+}
+```
+
+---
 
 ### 1. `ResearchContext`
 Describes the research parameters, target audience, specific questions, and scope.
