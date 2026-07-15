@@ -296,11 +296,20 @@ Identifies opportunities based on gaps discovered between competitors' offerings
   "title": "string",
   "description": "string",
   "gapAddressed": "string",
-  "competitorsImpacted": ["string (competitor names)"],
+  "competitorsImpacted": ["string"],
   "opportunityType": "Feature Gap" | "UX Improvement" | "Pricing Strategy" | "Technology Advantage",
   "impact": "High" | "Medium" | "Low",
   "effort": "High" | "Medium" | "Low",
-  "actionPlan": ["string"]
+  "actionPlan": ["string"],
+  "bestPerformingPatterns": [
+    {
+      "competitorName": "string",
+      "patternId": "string",
+      "rationale": "string"
+    }
+  ],
+  "recommendedFlowSteps": ["string"],
+  "emergingTrends": ["string"]
 }
 ```
 
@@ -318,6 +327,22 @@ Identifies opportunities based on gaps discovered between competitors' offerings
   "actionPlan": [
     "Integrate inline WebRTC-based camera stream for document verification.",
     "Implement WebAuthn for browser-based secure key storage."
+  ],
+  "bestPerformingPatterns": [
+    {
+      "competitorName": "Revolut",
+      "patternId": "pattern-rev-signup",
+      "rationale": "Uses a single autofocus text input layout which reduces user errors during authentication."
+    }
+  ],
+  "recommendedFlowSteps": [
+    "User enters phone number on homepage signup input.",
+    "Autofocus splits SMS verification grid input.",
+    "Native in-browser WebAuthn prompt triggers face check."
+  ],
+  "emergingTrends": [
+    "Passwordless WebAuthn keys",
+    "Inline real-time KYC camera streams"
   ]
 }
 ```
