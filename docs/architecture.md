@@ -193,6 +193,7 @@ Represents an interaction pattern or user flow extracted from a competitor's app
   "id": "string",
   "competitorId": "string",
   "flowName": "string (e.g. Signup Flow)",
+  "category": "Navigation" | "Search" | "Filters" | "Tables" | "Dashboards" | "Forms" | "Empty States" | "Loading" | "Errors" | "Permissions" | "Notifications" | "AI",
   "steps": [
     {
       "stepNumber": "integer",
@@ -219,6 +220,7 @@ Represents an interaction pattern or user flow extracted from a competitor's app
   "id": "pattern-rev-signup",
   "competitorId": "comp-revolut",
   "flowName": "Signup Flow",
+  "category": "Forms",
   "steps": [
     {
       "stepNumber": 1,
