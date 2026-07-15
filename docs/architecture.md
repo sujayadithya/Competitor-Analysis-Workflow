@@ -26,6 +26,8 @@ graph TD
     OA --> |Outputs| POList[ProductOpportunity List JSON]
     RC & RSData & CPList & UXPL & POList --> RG[Skill: Report Generator]
     RG --> |Generates| FinalReport[Competitor Research Report markdown/pdf]
+    RC & RSData & CPList & UXPL & POList --> FRB[Skill: Figma Research Board]
+    FRB --> |Creates/Updates| FigmaCanvas[Figma Design File Nodes]
 ```
 
 To maintain modularity and state persistence between runs, intermediate outputs are saved in `.gemini/antigravity-ide/scratch/` or local JSON state files.
@@ -360,5 +362,30 @@ The structured schema representing the complete research output.
   "opportunities": ["ProductOpportunity"],
   "generatedAt": "string (ISO 8601)",
   "author": "string"
+}
+```
+
+---
+
+### 6. `FigmaBoardConfig`
+Defines parameters for setting coordinates, dimensions, colors, and node structure for the generated Figma canvas.
+
+```json
+{
+  "fileKey": "string",
+  "canvasName": "string",
+  "spacing": {
+    "columnWidth": "number",
+    "rowHeight": "number",
+    "gutter": "number"
+  },
+  "styling": {
+    "backgroundColor": "string (hex)",
+    "stickyColors": {
+      "pro": "string (hex)",
+      "con": "string (hex)",
+      "opportunity": "string (hex)"
+    }
+  }
 }
 ```
